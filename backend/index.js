@@ -6,7 +6,7 @@ const cors = require('cors');
 
 app.use(bodyParser.json());
 app.use(cors({
-  origin: 'http://localhost:5173',  // Allow requests from this origin
+  origin: 'https://bajaj-black-ten.vercel.app',  // Allow requests from this origin
   methods: ['GET', 'POST'],         // Specify the allowed methods
   allowedHeaders: ['Content-Type'], // Specify allowed headers
 }));
