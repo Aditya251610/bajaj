@@ -67,10 +67,7 @@ app.post('/bfhl', (req, res) => {
   });
 });
 
-// Root Route
-app.all('/', (req, res) => {
-  res.json({ message: 'Root route' });
-});
+
 
 // Server port
 const PORT = 3000;
