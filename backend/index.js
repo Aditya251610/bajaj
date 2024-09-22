@@ -2,23 +2,25 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const app = express();
+const cors = require('cors');
 
 // CORS Middleware
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Origin', 'https://bajaj-black-ten.vercel.app'); // Specify your frontend origin
-  res.header('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, ' +
-    'Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  );
+app.use(cors())
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Credentials', true);
+//   res.header('Access-Control-Allow-Origin', 'https://bajaj-black-ten.vercel.app'); // Specify your frontend origin
+//   res.header('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+//   res.header(
+//     'Access-Control-Allow-Headers',
+//     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, ' +
+//     'Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+//   );
 
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(200); // Handle preflight requests
-  }
-  next();
-});
+//   if (req.method === 'OPTIONS') {
+//     return res.sendStatus(200); // Handle preflight requests
+//   }
+//   next();
+// });
 
 app.use(express.json());
 app.use(bodyParser.json());
