@@ -8,7 +8,7 @@ const app = express();
 // Apply CORS before any routes, specifying allowed origins
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Origin', 'https://bajaj-black-ten.vercel.app'); // Or specify your allowed origin
+  res.header('Access-Control-Allow-Origin', 'bajaj-black-ten.vercel.app'); // Or specify your allowed origin
   res.header('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
   res.header(
     'Access-Control-Allow-Headers',
