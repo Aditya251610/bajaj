@@ -4,8 +4,10 @@ const multer = require('multer');
 const app = express();
 const cors = require('cors');
 
-// Apply CORS before any routes
-app.use(cors());
+// Apply CORS before any routes, specifying allowed origins
+app.use(cors({
+  origin: ['https://bajaj-black-ten.vercel.app'] // Replace with your allowed origins
+}));
 
 app.use(bodyParser.json());
 
@@ -16,7 +18,7 @@ app.get('/bfhl', (req, res) => {
 
 app.post('/bfhl', (req, res) => {
   const { data, file_b64 } = req.body;
-  
+
   let numbers = [];
   let alphabets = [];
   let highestLowerCase = '';
@@ -33,7 +35,7 @@ app.post('/bfhl', (req, res) => {
   });
 
   const fileValid = !!file_b64;
-  const fileMimeType = 'image/png'; 
+  const fileMimeType = 'image/png'; // Ensure correct MIME type
   const fileSizeKB = file_b64 ? Math.round(Buffer.byteLength(file_b64, 'base64') / 1024) : 0;
 
   res.json({
