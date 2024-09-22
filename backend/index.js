@@ -7,9 +7,6 @@ const cors = require('cors');
 // Apply CORS before any routes
 app.use(cors());
 
-// Handle preflight requests for all routes
-app.options('*', cors());
-
 app.use(bodyParser.json());
 
 // Routes
