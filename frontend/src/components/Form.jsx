@@ -17,7 +17,7 @@ function Form() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('bajaj-backend-ashen.vercel.app/bfhl', JSON.parse(jsonInput));
+      const response = await axios.post('https://bajaj-backend-ashen.vercel.app/bfhl', JSON.parse(jsonInput));
       setResponseData(response.data);
       setError('');
     } catch (err) {
