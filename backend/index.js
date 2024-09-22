@@ -2,36 +2,33 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const app = express();
-// const cors = require('cors');
 
-
-// Apply CORS before any routes, specifying allowed origins
+// CORS Middleware
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Origin', '*'); // Or specify your allowed origin
+  res.header('Access-Control-Allow-Origin', 'https://bajaj-black-ten.vercel.app'); // Specify your frontend origin
   res.header('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
   res.header(
     'Access-Control-Allow-Headers',
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, ' +
     'Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
   );
-  
+
   if (req.method === 'OPTIONS') {
-    res.sendStatus(200);
-  } else {
-    next();
+    return res.sendStatus(200); // Handle preflight requests
   }
+  next();
 });
 
 app.use(express.json());
-
 app.use(bodyParser.json());
 
-// Routes
+// GET Route Example
 app.get('/bfhl', (req, res) => {
   res.status(200).json({ operation_code: 1 });
 });
 
+// POST Route Example
 app.post('/bfhl', (req, res) => {
   const { data, file_b64 } = req.body;
 
@@ -68,11 +65,10 @@ app.post('/bfhl', (req, res) => {
   });
 });
 
-
+// Root Route
 app.all('/', (req, res) => {
   res.json({ message: 'Root route' });
 });
-
 
 // Server port
 const PORT = 3000;
