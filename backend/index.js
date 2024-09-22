@@ -5,11 +5,7 @@ const app = express();
 const cors = require('cors');
 
 // Apply CORS before any routes
-app.use(cors({
-  origin: 'https://bajaj-black-ten.vercel.app',  // Allow requests from this origin
-  methods: ['GET', 'POST'],         // Specify the allowed methods
-  allowedHeaders: ['Content-Type'], // Specify allowed headers
-}));
+app.use(cors());
 
 app.use(bodyParser.json());
 
