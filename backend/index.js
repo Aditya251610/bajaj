@@ -68,6 +68,12 @@ app.post('/bfhl', (req, res) => {
   });
 });
 
+
+app.all('/', (req, res) => {
+  res.json({ message: 'Root route' });
+});
+
+
 // Server port
 const PORT = 3000;
 app.listen(PORT, () => {
