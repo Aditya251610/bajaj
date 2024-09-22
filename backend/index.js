@@ -4,13 +4,16 @@ const multer = require('multer');
 const app = express();
 const cors = require('cors');
 
-app.use(bodyParser.json());
+// Apply CORS before any routes
 app.use(cors({
   origin: 'https://bajaj-black-ten.vercel.app',  // Allow requests from this origin
   methods: ['GET', 'POST'],         // Specify the allowed methods
   allowedHeaders: ['Content-Type'], // Specify allowed headers
 }));
 
+app.use(bodyParser.json());
+
+// Routes
 app.get('/bfhl', (req, res) => {
   res.status(200).json({ operation_code: 1 });
 });
@@ -18,7 +21,6 @@ app.get('/bfhl', (req, res) => {
 app.post('/bfhl', (req, res) => {
   const { data, file_b64 } = req.body;
   
-
   let numbers = [];
   let alphabets = [];
   let highestLowerCase = '';
@@ -34,11 +36,9 @@ app.post('/bfhl', (req, res) => {
     }
   });
 
-
   const fileValid = !!file_b64;
   const fileMimeType = 'image/png'; 
   const fileSizeKB = file_b64 ? Math.round(Buffer.byteLength(file_b64, 'base64') / 1024) : 0;
-
 
   res.json({
     is_success: true,
@@ -54,6 +54,7 @@ app.post('/bfhl', (req, res) => {
   });
 });
 
+// Server port
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
